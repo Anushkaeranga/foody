@@ -2,6 +2,8 @@ import logo from './logo.svg';
 import './App.css';
 import React, {useEffect, useState } from "react"; 
 import Recipe from './Recipe';
+import GoogleLogin from 'react-google-login';
+import Login from './Login';
 function App() {
 
 const APP_KEY = "5ffb1510c088a989e10961fd33600a48";
@@ -36,13 +38,17 @@ const getSearch = e =>{
   setQuery(search)
  // setSearch('');
 }
+//google responce 
+const responseGoogle = (response) =>{
+  console.log(response);
+}
 
-//
   return (
     <div className="App">  
       <form onSubmit = {getSearch} className="search-form">
         <input className="search-bar" type ="text" value = {search} onChange = {updateSearch}/> 
         <button className="search-button" type = "submit">search</button>
+        <Login/>
       </form>
       <div className = "recepy">
         {recipies.map(recipe =>(
